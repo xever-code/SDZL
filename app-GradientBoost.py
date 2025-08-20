@@ -12,7 +12,7 @@ import shap
 # 创建一个空的DataFrame来存储预测数据
 if 'data' not in st.session_state:
     st.session_state['data'] = pd.DataFrame(
-        columns=['GLU','C-DHBL', 'color','Prediction','Label'])
+        columns=['GLU','PMN(%)', 'color','Prediction','Label'])
 
 # 在主页面上显示数据
 st.header('CSF  Infection Predictor')
@@ -41,7 +41,7 @@ st.sidebar.header('输入参数')
 # Input bar 1
 a = st.sidebar.number_input('GLU',  min_value=0.0, max_value=150.0, value=6.73)
 b = st.sidebar.number_input('PMN(%)',  min_value=0.0, max_value=200.0, value=50.00)
-c = st.sidebar.number_input('color', min_value=0.0, max_value=200.0, value=72.6)
+c = st.sidebar.number_input('color', min_value=0, max_value=1, value=1)
 
 # Unpickle classifier
 mm = joblib.load('./GradientBoost.pkl')
